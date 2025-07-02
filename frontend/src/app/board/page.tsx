@@ -9,7 +9,7 @@ import { getConfig } from "@/auth/utils";
 
 import { DialogRoot } from "./_components/dialog/dialog";
 import { Header } from "./_components/header";
-import { RezizableBoard } from "./_components/board";
+import { BoardColumns } from "./_components/board";
 import { Spinner } from "@/components/ui/spinner";
 import { Data, Metadata } from "./_components/interfaces";
 
@@ -50,7 +50,7 @@ function BoardContent() {
                 <div className="h-full w-full flex flex-col">
                     <Header board={data.board} setMetadata={setMetadata} setOpen={setOpen} />
                     <div className="h-full bg-background">
-                        <RezizableBoard data={data} setMetadata={setMetadata} />
+                        <BoardColumns data={data} setMetadata={setMetadata} />
                     </div>
                 </div>
             </DialogRoot>
