@@ -1,0 +1,29 @@
+name: MCP CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "mcp/**"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies and verify imports
+        working-directory: ./mcp
+        run: |
+          pip install .
+          python -c "from src.server import *"
+
+        env:
+          API_BASE_URL: "not_important"
+          MCP_USERNAME: "not_important"
+          MCP_PASSWORD: "not_important"

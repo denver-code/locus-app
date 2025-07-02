@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "kanban-api"
+version = "0.1.0"
+description = "A simple kanban API"
+authors = ["Mateo Velez <mateo.velezcobian@gmail.com>"]
+license = "MIT License"
+readme = "README.md"
+packages = [{include = "kanban_api"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+fastapi = "^0.115.7"
+uvicorn = {extras = ["standard"], version = "^0.34.0"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.37"}
+pydantic = {extras = ["email"], version = "^2.10.6"}
+pyjwt = "^2.10.1"
+pydantic-settings = "^2.7.1"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+psycopg2-binary = "^2.9.10"
+asyncpg = "^0.30.0"
+python-multipart = "^0.0.20"
+faker = "^35.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+fastapi = {extras = ["standard"], version = "^0.115.7"}
+pytest = "^8.3.4"
+httpx = "^0.28.1"
+black = "^24.10.0"
+ruff = "^0.9.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+preview = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I", "N", "W", "D"]
+ignore = ["D100", "D101", "D103", "D102", "D107"]

@@ -1,0 +1,22 @@
+# Git ignore patterns
+.vscode
+.notes
+.env
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Docker specific
+Dockerfile
+.dockerignore
+
+# Git specific
+.git
+.gitignore 
