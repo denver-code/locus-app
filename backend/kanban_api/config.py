@@ -2,8 +2,9 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    app_name: str = "Simple Kanban API"
+    app_name: str = "Locus API"
     debug: bool = False
+    use_static: bool = False
     secret_key: str
     algorithm: str
     db_url: str

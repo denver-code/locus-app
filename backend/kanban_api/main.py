@@ -56,7 +56,8 @@ api.include_router(card.router)
 
 app.include_router(api)
 
-app.mount("/", StaticFiles(directory=settings.static_files_dir, html=True), name="static")
+if settings.use_static:
+    app.mount("/", StaticFiles(directory=settings.static_files_dir, html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn

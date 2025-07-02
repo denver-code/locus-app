@@ -38,7 +38,7 @@ const Backlog = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export const RezizableBoard = ({
+export const BoardColumns = ({
     data,
     setMetadata,
 }: {
@@ -46,14 +46,19 @@ export const RezizableBoard = ({
     setMetadata: Dispatch<SetStateAction<Metadata>>;
 }) => {
     return (
-        <ResizablePanelGroup direction="vertical" className="h-full rounded-lg">
-            <ResizablePanel
-                defaultSize={70}
-                minSize={30}
-                className="h-full flex gap-6 p-6 bg-gradient-to-b from-background to-background/50"
-            >
-                {[CardColumn.Todo, CardColumn.Doing, CardColumn.Done].map((columnValue) => (
+        <div className="h-full flex gap-6 p-6 bg-gradient-to-b from-background to-background/50">
+            {[CardColumn.Backlog, CardColumn.Todo, CardColumn.Doing, CardColumn.Done].map((columnValue) => (
                     <Column key={columnValue} title={columnValue}>
+                        {
+                            columnValue === CardColumn.Backlog && (
+                                <AddCard
+                                    boardId={data.board.id}
+                                    setMetadata={setMetadata}
+                                    className="border-2 border-card-foreground/20 hover:border-card-foreground/40 transition-colors shadow-sm hover:shadow-md h-full min-h-16"
+                                />
+                            )
+
+                        }
                         {data.cards
                             .filter((card) => card.column === columnValue)
                             .map((card) => (
@@ -67,35 +72,7 @@ export const RezizableBoard = ({
                                 />
                             ))}
                     </Column>
-                ))}
-            </ResizablePanel>
-
-            <ResizableHandle
-                withHandle
-                className="bg-gradient-to-r from-border/50 via-border to-border/50"
-            />
-
-            <ResizablePanel className="h-full bg-gradient-to-b from-background/50 to-background">
-                <Backlog>
-                    <AddCard
-                        boardId={data.board.id}
-                        setMetadata={setMetadata}
-                        className="border-2 border-card-foreground/20 hover:border-card-foreground/40 transition-colors shadow-sm hover:shadow-md h-full min-h-16"
-                    />
-                    {data.cards
-                        .filter((card) => card.column === CardColumn.Backlog)
-                        .map((card) => (
-                            <DisplayCard
-                                key={card.id}
-                                card={card}
-                                board={data.board}
-                                setMetadata={setMetadata}
-                                className="border-2 border-card-foreground/20 hover:border-card-foreground/40 transition-colors shadow-sm hover:shadow-md h-full min-h-16"
-                                N={70}
-                            />
-                        ))}
-                </Backlog>
-            </ResizablePanel>
-        </ResizablePanelGroup>
+            ))}
+        </div>
     );
 };
