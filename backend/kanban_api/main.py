@@ -30,8 +30,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Simple Kanban API",
-    description="A simple kanban API",
+    title="Locus API",
+    description="Locus API",
     version=__version__,
     lifespan=lifespan,
 )
