@@ -38,6 +38,7 @@ class Board(Base, TimestampMixin):
 
     id: Mapped[int] = mapped_column(Identity(), primary_key=True)
     title: Mapped[str] = mapped_column(nullable=False)
+    acronym: Mapped[str] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(nullable=True)
 
     # Relationships

@@ -59,14 +59,17 @@ export function DisplayCard({
                 }}
                 className={classNames}
             >
-                <div className="flex gap-1.5">
-                    {card.labels.sort().map((color) => (
-                        <div
-                            key={color}
-                            className={`w-3 h-3 rounded-full ring-1 ring-black/5`}
-                            style={{ backgroundColor: color }}
-                        />
-                    ))}
+                <div className="flex items-center justify-between">
+                    <div className="flex gap-1.5">
+                        {card.labels.sort().map((color) => (
+                            <div
+                                key={color}
+                                className={`w-3 h-3 rounded-full ring-1 ring-black/5`}
+                                style={{ backgroundColor: color }}
+                            />
+                        ))}
+                    </div>
+                    <span className="text-xs text-zinc-500 font-mono justify-end">{board.acronym}-{card.id}</span>
                 </div>
                 <h3 className="font-semibold text-base tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
                     {card.title.length > N ? card.title.slice(0, N) + "..." : card.title}

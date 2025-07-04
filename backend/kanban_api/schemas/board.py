@@ -9,6 +9,7 @@ from kanban_api.schemas.label import LabelColor, LabelInCreate, LabelInUpdate, L
 # Input models
 class BoardInCreate(BaseSchema):
     title: str
+    acronym: str
     description: str = ""
 
     @computed_field
@@ -19,6 +20,7 @@ class BoardInCreate(BaseSchema):
 
 class BoardInUpdate(BaseSchema):
     title: str | None = None
+    acronym: str | None = None
     description: str | None = None
     labels: list[LabelInUpdate] | None = None
 
@@ -27,6 +29,7 @@ class BoardInUpdate(BaseSchema):
 class BoardOut(BaseSchema):
     id: int
     title: str
+    acronym: str
     labels: list[LabelOut]
     description: str
     created_at: datetime

@@ -38,6 +38,12 @@ export interface BoardInUpdate {
      * @type {string}
      * @memberof BoardInUpdate
      */
+    acronym?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof BoardInUpdate
+     */
     description?: string | null;
     /**
      * 
@@ -65,6 +71,7 @@ export function BoardInUpdateFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'title': json['title'] == null ? undefined : json['title'],
+        'acronym': json['acronym'] == null ? undefined : json['acronym'],
         'description': json['description'] == null ? undefined : json['description'],
         'labels': json['labels'] == null ? undefined : ((json['labels'] as Array<any>).map(LabelInUpdateFromJSON)),
     };
@@ -83,6 +90,7 @@ export function BoardInUpdateToJSONTyped(value?: BoardInUpdate | null, ignoreDis
         
         'title': value['title'],
         'description': value['description'],
+        'acronym': value['acronym'],
         'labels': value['labels'] == null ? undefined : ((value['labels'] as Array<any>).map(LabelInUpdateToJSON)),
     };
 }

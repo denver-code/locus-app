@@ -31,13 +31,19 @@ export interface BoardInCreate {
      * @memberof BoardInCreate
      */
     description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BoardInCreate
+     */
+    acronym: string;
 }
 
 /**
  * Check if a given object implements the BoardInCreate interface.
  */
 export function instanceOfBoardInCreate(value: object): value is BoardInCreate {
-    if (!('title' in value) || value['title'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined || !('acronym' in value)) return false;
     return true;
 }
 
@@ -52,6 +58,7 @@ export function BoardInCreateFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'title': json['title'],
+        'acronym': json['acronym'],
         'description': json['description'] == null ? undefined : json['description'],
     };
 }
@@ -68,6 +75,7 @@ export function BoardInCreateToJSONTyped(value?: BoardInCreate | null, ignoreDis
     return {
         
         'title': value['title'],
+        'acronym': value['acronym'],
         'description': value['description'],
     };
 }

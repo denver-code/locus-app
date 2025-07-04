@@ -28,6 +28,7 @@ import { z } from "zod";
 
 const formSchema = z.object({
     title: z.string().min(1, { message: "Title is required" }),
+    acronym: z.string().min(3, { message: "Acronym must be 3 characters" }),
 });
 
 const AddBoardContent = ({
@@ -41,6 +42,7 @@ const AddBoardContent = ({
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: "",
+            acronym: "",
         },
     });
 
@@ -50,6 +52,7 @@ const AddBoardContent = ({
             const response = await boardApi.createBoardApiBoardsPost({
                 boardInCreate: {
                     title: values.title,
+                    acronym: values.acronym
                 },
             });
             setBoards((prevBoards) => (prevBoards ? [...prevBoards, response] : null));
@@ -77,6 +80,24 @@ const AddBoardContent = ({
                             <FormControl>
                                 <Input
                                     placeholder="Project Name or Goal..."
+                                    {...field}
+                                    className="w-full"
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="acronym"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Board Acronym (3 letters)</FormLabel>
+                            <FormControl>
+                                <Input
+                                    placeholder="COM"
                                     {...field}
                                     className="w-full"
                                 />

@@ -39,6 +39,12 @@ export interface BoardOut {
      * @memberof BoardOut
      */
     title: string;
+     /**
+     * 
+     * @type {string}
+     * @memberof BoardOut
+     */
+    acronym: string;
     /**
      * 
      * @type {Array<LabelOut>}
@@ -70,6 +76,7 @@ export interface BoardOut {
  */
 export function instanceOfBoardOut(value: object): value is BoardOut {
     if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('acronym' in value) || value['acronym'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('labels' in value) || value['labels'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
@@ -90,6 +97,7 @@ export function BoardOutFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         
         'id': json['id'],
         'title': json['title'],
+        'acronym': json['acronym'],
         'labels': ((json['labels'] as Array<any>).map(LabelOutFromJSON)),
         'description': json['description'],
         'createdAt': (new Date(json['createdAt'])),
@@ -110,6 +118,7 @@ export function BoardOutToJSONTyped(value?: BoardOut | null, ignoreDiscriminator
         
         'id': value['id'],
         'title': value['title'],
+        'acronym': value['acronym'],
         'labels': ((value['labels'] as Array<any>).map(LabelOutToJSON)),
         'description': value['description'],
         'createdAt': ((value['createdAt']).toISOString()),

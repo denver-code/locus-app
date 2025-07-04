@@ -10,7 +10,7 @@ from kanban_api.schemas.label import LabelColor
 class CardColumn(str, Enum):
     BACKLOG = "BACKLOG"
     TODO = "TODO"
-    DOING = "DOING"
+    IN_PROGRESS = "IN_PROGRESS"
     DONE = "DONE"
 
 

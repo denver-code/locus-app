@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Simple Kanban",
-    description: "A simple Kanban board application for task management",
+    title: "Locus - App",
+    description: "An application for task management",
     keywords: ["kanban", "task management", "project management", "agile"],
     icons: {
         icon: "/favicon.svg",
