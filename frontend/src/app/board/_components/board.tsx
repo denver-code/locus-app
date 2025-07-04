@@ -22,21 +22,6 @@ const Column = ({ title, children }: { title: string; children: React.ReactNode 
     );
 };
 
-// Take in cards as children
-const Backlog = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <div className="h-full flex flex-col rounded-lg border bg-gradient-to-b from-card to-background m-4 shadow-lg">
-            <div className="p-3 border-b bg-gradient-to-r from-card-foreground/90 to-card-foreground rounded-t-lg">
-                <h2 className="text-lg font-semibold text-card text-center tracking-wide">
-                    BACKLOG
-                </h2>
-            </div>
-            <ScrollArea className="h-fit max-h-full">
-                <div className="grid grid-cols-3 gap-5 p-5">{children}</div>
-            </ScrollArea>
-        </div>
-    );
-};
 
 export const BoardColumns = ({
     data,

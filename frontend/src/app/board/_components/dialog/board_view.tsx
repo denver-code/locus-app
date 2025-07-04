@@ -32,6 +32,11 @@ const formSchema = z.object({
     title: z.string().min(4, {
         message: "Title must be at least 4 characters.",
     }),
+    acronym: z.string().min(3, {
+        message: "Acronym must be 3 characters.",
+    }).max(3, {
+        message: "Acronym must be 3 characters.",
+    }),
     description: z.string(),
     labels: z.array(
         z.object({
@@ -65,6 +70,35 @@ const Title = ({ form }: { form: any }) => {
             onClick={() => setIsTitleEditable(true)}
         >
             {form.watch("title")}
+        </div>
+    );
+};
+
+
+const Acronym = ({ form }: { form: any }) => {
+    const [isTitleEditable, setIsTitleEditable] = useState(false);
+
+    const handleBlur = (value: string) => {
+        form.setValue("acronym", value);
+        setIsTitleEditable(false);
+    };
+
+    if (isTitleEditable) {
+        return (
+            <Input
+                className="text-lg font-bold tracking-tight"
+                {...form.register("acronym")}
+                onBlur={(e) => handleBlur(e.target.value)}
+                autoFocus
+            />
+        );
+    }
+    return (
+        <div
+            className="text-lg font-bold tracking-tight hover:text-primary/80 cursor-pointer transition-colors"
+            onClick={() => setIsTitleEditable(true)}
+        >
+            {form.watch("acronym")}
         </div>
     );
 };
@@ -190,6 +224,7 @@ export const ViewBoardDialog = ({
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: metadata.board.title,
+            acronym: metadata.board.acronym,
             description: metadata.board.description,
             labels: metadata.board.labels,
         },
@@ -198,6 +233,7 @@ export const ViewBoardDialog = ({
     useEffect(() => {
         form.reset({
             title: metadata.board.title,
+            acronym: metadata.board.acronym,
             description: metadata.board.description,
             labels: metadata.board.labels,
         });
@@ -207,6 +243,7 @@ export const ViewBoardDialog = ({
         console.log(values);
         const patch: BoardInUpdate = {
             title: values.title !== metadata.board.title ? values.title : undefined,
+            acronym: values.acronym !== metadata.board.acronym ? values.acronym : undefined,
             description:
                 values.description !== metadata.board.description ? values.description : undefined,
             labels: values.labels !== metadata.board.labels ? values.labels : undefined,
@@ -269,11 +306,19 @@ export const ViewBoardDialog = ({
         <DialogContent className="w-full max-w-2xl max-h-screen overflow-hidden">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="flex items-center justify-between w-full pr-6">
                     <DialogHeader>
-                        <DialogTitle>
-                            <Title form={form} />
-                        </DialogTitle>
-                    </DialogHeader>
+                            <DialogTitle>
+                                <Title form={form} />
+                            </DialogTitle>
+                        </DialogHeader>
+
+                        <DialogHeader>
+                            <DialogTitle>
+                                <Acronym form={form} />
+                            </DialogTitle>
+                        </DialogHeader>
+                    </div>
                     <div className="h-fit md:w-auto flex flex-col gap-4">
                         <Description form={form} />
                         <Labels form={form} />

@@ -48,7 +48,7 @@ export function DisplayCard({
     N?: number;
 }) {
     const classNames = cn(
-        "flex flex-col gap-2 p-3 rounded-lg border bg-background hover:bg-accent/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md",
+        "flex flex-col items-start gap-2 p-3 rounded-lg border bg-background hover:bg-accent/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md",
         className
     );
     return (
@@ -59,7 +59,7 @@ export function DisplayCard({
                 }}
                 className={classNames}
             >
-                <div className="flex items-center justify-between">
+                <div className="flex justify-between w-full">
                     <div className="flex gap-1.5">
                         {card.labels.sort().map((color) => (
                             <div
