@@ -210,9 +210,9 @@ const Column = ({ form }: { form: any }) => {
                         <Square className="w-4 h-4" /> Todo
                     </div>
                 </SelectItem>
-                <SelectItem value={CardColumn.Doing}>
+                <SelectItem value={CardColumn.InProgress}>
                     <div className="flex items-center gap-2">
-                        <SquareMinus className="w-4 h-4" /> Doing
+                        <SquareMinus className="w-4 h-4" /> In Progress
                     </div>
                 </SelectItem>
                 <SelectItem value={CardColumn.Done}>

@@ -59,6 +59,7 @@ export const AddCardForm = ({
                 cardInCreate: [
                     {
                         title: values.title,
+                        column: metadata.column,
                     },
                 ],
             });

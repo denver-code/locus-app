@@ -1,6 +1,7 @@
 import { CardOut } from "@/api-client/models/CardOut";
 
 import { BoardOut } from "@/api-client/models/BoardOut";
+import { CardColumn } from "@/api-client/models";
 
 export interface Data {
     board: BoardOut;
@@ -20,6 +21,7 @@ export interface CardView {
 export interface CardAdd {
     type: "card_add";
     boardId: number;
+    column?: CardColumn;
 }
 
 export interface BoardView {
