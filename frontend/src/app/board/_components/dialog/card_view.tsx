@@ -365,7 +365,7 @@ export const ViewDialog = ({
                     </DialogHeader>
                     <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-4 flex-wrap">
-                            <Labels form={form} labels={metadata.board.labels} />
+                            {/* <Labels form={form} labels={metadata.board.labels} /> */}
                             <Column form={form} />
                         </div>
                         <Description form={form} />

@@ -48,7 +48,7 @@ export function DisplayCard({
     N?: number;
 }) {
     const classNames = cn(
-        "flex flex-col items-start gap-2 p-3 rounded-lg border bg-background hover:bg-accent/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md",
+        "flex flex-col items-start gap-2 p-2 rounded-lg border bg-background hover:bg-accent/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md",
         className
     );
     return (
@@ -71,7 +71,7 @@ export function DisplayCard({
                     </div>
                     <span className="text-xs text-zinc-500 font-mono justify-end">{board.acronym}-{card.id}</span>
                 </div>
-                <h3 className="font-semibold text-base tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
+                <h3 className="font-semibold justify-start text-left tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
                     {card.title.length > N ? card.title.slice(0, N) + "..." : card.title}
                 </h3>
             </div>

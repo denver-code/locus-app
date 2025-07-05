@@ -20,7 +20,7 @@
 export const CardColumn = {
     Backlog: 'BACKLOG',
     Todo: 'TODO',
-    Doing: 'DOING',
+    InProgress: 'IN_PROGRESS',
     Done: 'DONE'
 } as const;
 export type CardColumn = typeof CardColumn[keyof typeof CardColumn];

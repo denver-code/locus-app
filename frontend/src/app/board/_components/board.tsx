@@ -32,7 +32,7 @@ export const BoardColumns = ({
 }) => {
     return (
         <div className="h-full flex gap-6 p-6 bg-gradient-to-b from-background to-background/50">
-            {[CardColumn.Backlog, CardColumn.Todo, CardColumn.Doing, CardColumn.Done].map((columnValue) => (
+            {[CardColumn.Backlog, CardColumn.Todo, CardColumn.InProgress, CardColumn.Done].map((columnValue) => (
                     <Column key={columnValue} title={columnValue}>
                         {
                             columnValue === CardColumn.Backlog && (
