@@ -8,7 +8,7 @@ authors = [
 ]
 license = "MIT License"
 readme = "README.md"
-packages = [{ include = "kanban_api" }]
+packages = [{ include = "locus_api" }]
 
 [tool.poetry.dependencies]
 python = ">=3.10"

@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from pytest import fixture
 
-from kanban_api.schemas.label import LabelColor
+from locus_api.schemas.label import LabelColor
 from tests.conftest import auth_client, fake
 
 

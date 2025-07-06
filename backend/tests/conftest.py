@@ -22,7 +22,7 @@ def get_random_accont_credentials(client: TestClient):
 
 @fixture(scope="session")
 def client() -> Generator[TestClient, None, None]:
-    from kanban_api.main import app
+    from locus_api.main import app
 
     with TestClient(app, base_url="http://testserver/api") as client:
         yield client

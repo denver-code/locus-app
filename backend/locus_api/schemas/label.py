@@ -1,6 +1,6 @@
 from enum import Enum
 
-from kanban_api.schemas.base import BaseSchema
+from locus_api.schemas.base import BaseSchema
 
 
 class LabelColor(str, Enum):

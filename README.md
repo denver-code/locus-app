@@ -1,10 +1,7 @@
-# Simple Kanban
+# Locus App
 
-A modern, full-stack Kanban board application built to apply software engineering best practices.
 
 ## Overview
-
-Simple Kanban is a task management system built with FastAPI and Next.js, showcasing clean architecture and modern development practices. It implements core Kanban methodology features while maintaining simplicity and performance.
 
 ## Key Features
 
@@ -31,22 +28,14 @@ Simple Kanban is a task management system built with FastAPI and Next.js, showca
 ├── mcp/             # Model Context Protocol for LLM integration
 └── scripts/         # Development utilities
 ```
-
-## Screenshots
-
-![Kanban Board View](./docs/assets/board.png)
-![Kanban Card View](./docs/assets/card.png)
-![Kanban Board Details View](./docs/assets/board_dialog.png)
-_A minimalist Kanban interface with four columns (Backlog, Todo, Doing, Done) to reduce decision effort. Cards feature titles, descriptions, and a curated set of label colors._
-
 ## Getting Started
 
 ### Quick Start with Docker
 
 ```bash
 # Clone the repository
-git clone https://github.com/mateo-velez/simple-kanban.git
-cd simple-kanban
+git clone https://github.com/denver-coder/locus-app.git
+cd locus-app
 
 # Launch services
 docker compose up -d
@@ -84,7 +73,11 @@ Prerequisites:
 
 - Database migrations with Alembic
 - Enhanced logging system
-- Drag-and-drop card functionality
 - Frontend chat integration
 - Board sharing implementation
 - User analytics dashboard
+
+
+## Acknowledgements
+
+This project is a heavily modified fork of the [simple-kanban](https://github.com/mateo-velez/simple-kanban) project, created by Mateo Velez and licensed under the MIT License.

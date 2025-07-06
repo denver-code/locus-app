@@ -1,4 +1,4 @@
-from kanban_api.utils import get_password_hash, verify_password
+from locus_api.utils import get_password_hash, verify_password
 
 
 def test_hashed_is_str():

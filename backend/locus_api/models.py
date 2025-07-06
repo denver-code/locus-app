@@ -3,8 +3,8 @@ from datetime import datetime
 from sqlalchemy import DateTime, ForeignKey, Identity, UniqueConstraint, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
-from kanban_api.schemas.card import CardColumn
-from kanban_api.schemas.label import LabelColor
+from locus_api.schemas.card import CardColumn
+from locus_api.schemas.label import LabelColor
 
 
 class Base(DeclarativeBase):

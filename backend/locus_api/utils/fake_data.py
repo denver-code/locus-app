@@ -3,10 +3,10 @@ from pathlib import Path
 
 from faker import Faker
 
-from kanban_api.models import Board, Card, Label, User
-from kanban_api.schemas.card import CardColumn
-from kanban_api.schemas.label import LabelColor
-from kanban_api.utils.password import get_password_hash
+from locus_api.models import Board, Card, Label, User
+from locus_api.schemas.card import CardColumn
+from locus_api.schemas.label import LabelColor
+from locus_api.utils.password import get_password_hash
 
 
 class FakeData:

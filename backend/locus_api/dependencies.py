@@ -4,9 +4,9 @@ from jwt.exceptions import InvalidTokenError
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from kanban_api.database import SessionLocal
-from kanban_api.models import Board, Card, User, UserBoard
-from kanban_api.utils import decode_access_token
+from locus_api.database import SessionLocal
+from locus_api.models import Board, Card, User, UserBoard
+from locus_api.utils import decode_access_token
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/tokens")
 

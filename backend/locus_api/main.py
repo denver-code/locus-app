@@ -4,12 +4,12 @@ from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from kanban_api import __version__
-from kanban_api.config import settings
-from kanban_api.database import SessionLocal, engine
-from kanban_api.models import Base
-from kanban_api.routes import auth, board, card, user
-from kanban_api.utils.fake_data import FakeData
+from locus_api import __version__
+from locus_api.config import settings
+from locus_api.database import SessionLocal, engine
+from locus_api.models import Base
+from locus_api.routes import auth, board, card, user
+from locus_api.utils.fake_data import FakeData
 
 
 @asynccontextmanager

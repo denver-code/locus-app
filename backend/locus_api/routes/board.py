@@ -2,12 +2,12 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import insert, select
 from sqlalchemy.orm import Session
 
-from kanban_api.dependencies import get_board, get_current_user, get_db, get_user  # type: ignore
-from kanban_api.models import Board, Card, Label, User, UserBoard
-from kanban_api.schemas.board import BoardInCreate, BoardInUpdate, BoardOut
-from kanban_api.schemas.card import CardInCreate, CardOut
-from kanban_api.schemas.user import UserOutPublic
-from kanban_api.utils.attr import update_attributes
+from locus_api.dependencies import get_board, get_current_user, get_db, get_user  # type: ignore
+from locus_api.models import Board, Card, Label, User, UserBoard
+from locus_api.schemas.board import BoardInCreate, BoardInUpdate, BoardOut
+from locus_api.schemas.card import CardInCreate, CardOut
+from locus_api.schemas.user import UserOutPublic
+from locus_api.utils.attr import update_attributes
 
 router = APIRouter(prefix="/boards", tags=["boards"], dependencies=[Depends(get_current_user)])
 

@@ -4,8 +4,8 @@ from datetime import datetime, timedelta, timezone
 import pytest
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
-from kanban_api.schemas.token import TokenData
-from kanban_api.utils import create_access_token, decode_access_token
+from locus_api.schemas.token import TokenData
+from locus_api.utils import create_access_token, decode_access_token
 
 
 def test_create_access_token_returns_string():

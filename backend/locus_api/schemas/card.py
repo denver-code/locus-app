@@ -3,8 +3,8 @@ from enum import Enum
 
 from pydantic import field_validator
 
-from kanban_api.schemas.base import BaseSchema
-from kanban_api.schemas.label import LabelColor
+from locus_api.schemas.base import BaseSchema
+from locus_api.schemas.label import LabelColor
 
 
 class CardColumn(str, Enum):

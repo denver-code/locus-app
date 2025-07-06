@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from kanban_api.config import settings
+from locus_api.config import settings
 
 # Configure connect_args based on DB_URL
 if settings.db_url.startswith("sqlite://"):

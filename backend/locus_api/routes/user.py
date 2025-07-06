@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from kanban_api.dependencies import get_current_user, get_db
-from kanban_api.models import User
-from kanban_api.schemas.user import UserInCreate, UserInSearch, UserInUpdate, UserOut, UserOutPublic
+from locus_api.dependencies import get_current_user, get_db
+from locus_api.models import User
+from locus_api.schemas.user import UserInCreate, UserInSearch, UserInUpdate, UserOut, UserOutPublic
 
 router = APIRouter(prefix="/users", tags=["users"])
 

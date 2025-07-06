@@ -32,7 +32,7 @@ I developed this backend service as a RESTful API to power a Kanban board applic
 The backend follows a modular structure for maintainability and separation of concerns:
 
 ```text
-kanban_api/
+locus_api/
 ├── config.py          # Environment and app configuration
 ├── database.py        # Database connection and session management
 ├── dependencies.py    # FastAPI dependency injection (auth, current user)

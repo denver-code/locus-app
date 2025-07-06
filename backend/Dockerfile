@@ -5,7 +5,7 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
-ENV PYTHONPATH=/app/kanban_api
+ENV PYTHONPATH=/app/locus_api
 
 # Install system deps and clean up in same layer
 RUN apt-get update && apt-get install -y \
@@ -17,8 +17,8 @@ RUN apt-get update && apt-get install -y \
 COPY pyproject.toml README.md ./
 
 # Create a dummy src directory with __init__.py
-RUN mkdir -p kanban_api && \
-    touch kanban_api/__init__.py
+RUN mkdir -p locus_api && \
+    touch locus_api/__init__.py
 
 
 
@@ -32,7 +32,7 @@ COPY noxfile.py noxfile.py
 
 RUN nox -s test --install-only
 # Copy actual source and test files
-COPY kanban_api/ kanban_api/
+COPY locus_api/ locus_api/
 COPY tests/ tests/
 RUN mkdir -p static
 
@@ -45,11 +45,11 @@ CMD ["nox", "-s", "test"]
 FROM base AS prod
 RUN pip install --no-cache-dir .
 # Copy actual source files
-COPY kanban_api/ kanban_api/
+COPY locus_api/ locus_api/
 
 # Create static directory and copy frontend build
 RUN mkdir -p static
 COPY static/ static/
 
 EXPOSE 8000
-CMD ["uvicorn", "kanban_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "locus_api.main:app", "--host", "0.0.0.0", "--port", "8000"]

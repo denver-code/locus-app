@@ -29,19 +29,6 @@ poetry install
 3. Configure environment:
 
    - Copy `.env.example` to `.env`
-   - Required variables:
-     ```env
-     SECRET_KEY=your-secret-key
-     ALGORITHM=HS256
-     DB_URL=sqlite:///./kanban.db  # or postgresql://user:pass@host/db
-     ```
-   - Optional settings:
-     ```env
-     DEBUG=false
-     DB_ECHO=false        # SQL query logging
-     DROP_ALL=false       # Reset database on startup
-     POPULATE_DB=false    # Seed test data
-     ```
 
 4. Development commands:
 
@@ -68,7 +55,7 @@ docker run -p 8000:8000 kanban-api
 ## Project Structure
 
 ```
-kanban_api/
+locus_api/
 ├── routes/          # API endpoints
 ├── schemas/         # Pydantic models
 ├── utils/           # Helper functions
