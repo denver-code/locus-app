@@ -6,7 +6,7 @@ from tests.conftest import auth_client, fake, get_random_accont_credentials
 
 @fixture(scope="function")
 def board(auth_client: TestClient):
-    data = {"title": fake.sentence(), "description": fake.sentence()}
+    data = {"title": fake.sentence(), "description": fake.sentence(), "acronym": fake.word()}
     response = auth_client.post("/boards", json=data)
     assert response.status_code == 201
     return response.json()
@@ -18,12 +18,13 @@ def test_list_boards(auth_client: TestClient):
 
 
 def test_create_board(auth_client: TestClient):
-    data = {"title": fake.sentence(), "description": fake.sentence()}
+    data = {"title": fake.sentence(), "description": fake.sentence(), "acronym": fake.word()}
     response = auth_client.post("/boards", json=data)
     assert response.status_code == 201
     content = response.json()
     assert content["title"] == data["title"]
     assert content["description"] == data["description"]
+    assert content["acronym"] == data["acronym"]
     assert len(content["labels"]) == 7
     assert content["id"] is not None
 
@@ -34,6 +35,7 @@ def test_get_board(auth_client: TestClient, board: dict):
     content = response.json()
     assert content["title"] == board["title"]
     assert content["description"] == board["description"]
+    assert content["acronym"] == board["acronym"]
     assert content["id"] == board["id"]
 
 
@@ -70,6 +72,17 @@ def test_update_board(auth_client: TestClient, board: dict):
     assert content["title"] == new_title
     assert content["id"] == board["id"]
     assert content["description"] == new_description
+    assert froze_labels(content["labels"]) == froze_labels(board["labels"])
+
+    # acronym
+    new_acronym = "NEW"
+    response = auth_client.patch(f"/boards/{board['id']}", json={"acronym": new_acronym})
+    assert response.status_code == 200
+    content = response.json()
+    assert content["title"] == new_title
+    assert content["id"] == board["id"]
+    assert content["description"] == new_description
+    assert content["acronym"] == new_acronym
     assert froze_labels(content["labels"]) == froze_labels(board["labels"])
 
     # labels

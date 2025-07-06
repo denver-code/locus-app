@@ -9,7 +9,7 @@ from tests.conftest import auth_client, fake
 def populated_cards(auth_client: TestClient):
     print("populated_cards")
     response = auth_client.post(
-        "/boards", json={"title": fake.sentence(), "description": fake.sentence()}
+        "/boards", json={"title": fake.sentence(), "description": fake.sentence(), "acronym": fake.word()}
     )
     assert response.status_code == 201
     board_id = response.json()["id"]
