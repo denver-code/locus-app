@@ -7,6 +7,7 @@ from locus_api.schemas.base import BaseSchema
 from locus_api.schemas.label import LabelColor
 
 
+# ToDo: Make it more modular and move to a separate file
 class CardColumn(str, Enum):
     BACKLOG = "BACKLOG"
     TODO = "TODO"
