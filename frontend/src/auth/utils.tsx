@@ -42,7 +42,7 @@ export const clearToken = (): void => {
 
 export const getConfig = (): Configuration => {
     const token = getToken();
-    const basePath = process.env.NODE_ENV === "development" ? "http://localhost:8000" : "";
+    const basePath = process.env.NODE_ENV === "development" ? "http://localhost:8000" : "https://api.locus.ihorsavenko.com";
 
     return new Configuration({
         ...(token && { accessToken: "Bearer " + token.accessToken }),
