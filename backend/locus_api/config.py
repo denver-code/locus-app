@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     secret_key: str
     algorithm: str
     db_url: str
+    cors_origins: str = "https://locus.ihorsavenko.com,https://www.locus.ihorsavenko.com"
     db_echo: bool = False
     drop_all: bool = False
     static_files_dir: str = "static"

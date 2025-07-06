@@ -1,34 +1,46 @@
 services:
   db:
     image: postgres:15-alpine
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: kanban
-    ports:
-      - "5432:5432"
+    restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB:}
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U admin -d kanban"]
       interval: 5s
       timeout: 5s
       retries: 5
 
-  backend:
+  api:
     build:
-      context: backend/
+      context: ./backend
       dockerfile: Dockerfile
-    environment:
-      SECRET_KEY: e022b6e22b2f42ae5e1d77194a0aac4ff16e47090ac2fd15e15926e3761c2773
-      ALGORITHM: HS256
-      DB_URL: postgresql://admin:admin@db:5432/kanban
-      POPULATE_DB: TRUE
-    ports:
-      - "8000:8000"
+    restart: unless-stopped
     depends_on:
       db:
         condition: service_healthy
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - DB_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - POPULATE_DB=${POPULATE_DB}
+      - CORS_ORIGINS=${CORS_ORIGINS}
+
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    depends_on:
+      - api
 
 volumes:
   postgres_data:
+  caddy_data:
