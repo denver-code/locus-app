@@ -27,7 +27,6 @@ async def lifespan(app: FastAPI):
             session.commit()
     yield
     # after the app shuts down
-    # nothing yet
 
 
 app = FastAPI(
