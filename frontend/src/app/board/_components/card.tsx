@@ -38,6 +38,7 @@ export function AddCard({
     );
 }
 
+
 export function DisplayCard({
     card,
     board,
@@ -56,12 +57,12 @@ export function DisplayCard({
     N?: number
   }) {
     const classNames = cn(
-      "flex flex-col items-start gap-2 p-2 rounded-lg border bg-zinc-900 hover:bg-zinc-950/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md group",
+      "flex flex-col items-start gap-2 p-2 rounded-lg border bg-zinc-900 hover:bg-zinc-950/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md group w-full",
       className,
     )
   
     return (
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <div
           onClick={() => {
             setMetadata({ type: "card_view", card: card, board: board })
@@ -84,7 +85,7 @@ export function DisplayCard({
           </div>
           <div className="flex w-full">
             <CardStatusDropdown card={card} data={data} setData={setData} />
-            <h3 className="font-semibold justify-start text-left tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
+            <h3 className="font-semibold flex-1 justify-start text-left tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
               {card.title.length > N ? card.title.slice(0, N) + "..." : card.title}
             </h3>
           </div>
@@ -92,4 +93,3 @@ export function DisplayCard({
       </DialogTrigger>
     )
   }
-  

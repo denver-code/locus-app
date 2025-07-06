@@ -121,7 +121,7 @@ export const AddCardForm = ({
                     />
 
                     <DialogFooter>
-                        <Button type="submit" className="bg-black hover:bg-gray-800">
+                        <Button type="submit" className="w-full ">
                             Create Card
                         </Button>
                     </DialogFooter>
