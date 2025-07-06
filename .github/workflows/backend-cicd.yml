@@ -1,0 +1,53 @@
+name: Test and Deploy Backend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-deploy.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-deploy.yml"
+
+jobs:
+  # --- JOB 1: RUN TESTS IN DOCKER ---
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and run tests in Docker
+        working-directory: ./backend
+        run: |
+          # Build the image using the 'test' stage from your Dockerfile
+          docker build --target test -t backend-test .
+
+          # Run the tests inside the container
+          docker run backend-test
+
+  # --- JOB 2: DEPLOY ---
+  # This job ONLY runs on a push to main, and only if the 'test' job succeeded
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/locus-app
+            git pull origin main
+            echo "🚀 Starting deployment..."
+            sudo docker compose --env-file ./backend/.env up -d --build
+            echo "✅ Deployment successful!"
