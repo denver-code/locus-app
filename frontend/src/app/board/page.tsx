@@ -50,7 +50,7 @@ function BoardContent() {
                 <div className="h-full w-full flex flex-col">
                     <Header board={data.board} setMetadata={setMetadata} setOpen={setOpen} />
                     <div className="h-full bg-background">
-                        <BoardColumns data={data} setMetadata={setMetadata} />
+                        <BoardColumns data={data} setMetadata={setMetadata}  setData={setData} />
                     </div>
                 </div>
             </DialogRoot>

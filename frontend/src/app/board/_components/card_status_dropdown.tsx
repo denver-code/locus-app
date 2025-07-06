@@ -128,6 +128,9 @@ export function CardStatusDropdown({ card, data, setData, trigger }: CardStatusD
     setIsOpen(false)
   }
 
+  const currentStatus = statusConfig[card.column]
+  const CurrentIcon = currentStatus.icon
+
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
@@ -136,10 +139,14 @@ export function CardStatusDropdown({ card, data, setData, trigger }: CardStatusD
             <Button
               variant="ghost"
               size="sm"
-              className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="h-6 w-6 p-0 mr-2"
               onClick={(e) => e.stopPropagation()}
             >
-              <MoreHorizontal className="h-3 w-3" />
+              {/* <MoreHorizontal className="h-3 w-3" /> */}
+              {/* Show current status icon */}
+              <CurrentIcon className={cn("h-3 w-3", currentStatus.color)} />
+              <span className="sr-only">Change status</span>
+             
             </Button>
           )}
         </div>

@@ -68,7 +68,7 @@ export function DisplayCard({
           }}
           className={classNames}
         >
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full pl-1">
             <span className="text-xs text-zinc-500 font-mono justify-end">
               {board.acronym}-{card.id}
             </span>
@@ -80,12 +80,14 @@ export function DisplayCard({
                   style={{ backgroundColor: color }}
                 />
               ))}
-              <CardStatusDropdown card={card} data={data} setData={setData} />
             </div>
           </div>
-          <h3 className="font-semibold justify-start text-left tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
-            {card.title.length > N ? card.title.slice(0, N) + "..." : card.title}
-          </h3>
+          <div className="flex w-full">
+            <CardStatusDropdown card={card} data={data} setData={setData} />
+            <h3 className="font-semibold justify-start text-left tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
+              {card.title.length > N ? card.title.slice(0, N) + "..." : card.title}
+            </h3>
+          </div>
         </div>
       </DialogTrigger>
     )

@@ -60,8 +60,12 @@ const Column = ({
 
 const HiddenColumnsPanel = ({
   hiddenColumns,
+  boardId,
+  setMetadata,
 }: {
-  hiddenColumns: Array<{ name: string; count: number; column: CardColumn }>
+  hiddenColumns: Array<{ name: string; count: number; column: CardColumn }>,
+  boardId: number,
+  setMetadata: Dispatch<SetStateAction<Metadata>>
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -81,26 +85,34 @@ const HiddenColumnsPanel = ({
         {isExpanded && (
           <div className="mt-2 space-y-1">
             {hiddenColumns.map((col) => (
-              <Button
-                key={col.column}
-                variant="ghost"
-                size="sm"
-                className="w-full justify-between text-xs h-8 px-2"
-              >
-                <div className="flex items-center gap-2">
-                  <div
-                    className={cn(
-                      "w-2 h-2 rounded-full",
-                      col.column === CardColumn.InProgress && "bg-yellow-500",
-                      col.column === CardColumn.Done && "bg-green-500",
-                      col.column === CardColumn.Backlog && "bg-gray-500",
-                      col.column === CardColumn.Todo && "bg-blue-500",
-                    )}
-                  ></div>
-                  <span className="text-muted-foreground">{col.name}</span>
-                </div>
-                <span className="text-xs text-muted-foreground">{col.count}</span>
-              </Button>
+              <div className="flex items-center justify-between" key={col.column}>
+                  <Button
+                  key={col.column}
+                  variant="ghost"
+                  size="sm"
+                  className="w-full justify-between text-xs h-8 px-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <div
+                      className={cn(
+                        "w-2 h-2 rounded-full",
+                        col.column === CardColumn.InProgress && "bg-yellow-500",
+                        col.column === CardColumn.Done && "bg-green-500",
+                        col.column === CardColumn.Backlog && "bg-gray-500",
+                        col.column === CardColumn.Todo && "bg-blue-500",
+                      )}
+                    ></div>
+                    <span className="text-muted-foreground">{col.name}</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">{col.count}</span>
+                </Button>
+                <AddCard
+                    boardId={boardId}
+                    column={col.column}
+                    setMetadata={setMetadata}
+                  />
+              </div>
+
             ))}
           </div>
         )}
@@ -176,7 +188,7 @@ export const BoardColumns = ({
         <ResizableHandle />
 
         <ResizablePanel defaultSize={20} minSize={15} maxSize={30}>
-          <HiddenColumnsPanel hiddenColumns={hiddenColumns}/>
+          <HiddenColumnsPanel hiddenColumns={hiddenColumns} boardId={data.board.id} setMetadata={setMetadata} />
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
