@@ -380,41 +380,10 @@ export const BoardColumns = ({
     }
   }
 
+  // This function is intentionally left empty to prevent default behavior
+  // It can be used to handle drag over events if needed in the future.
   const handleDragOver = (event: DragOverEvent) => {
     return
-
-    // const { active, over } = event
-    // if (!over) return
-
-    // const activeId = active.id as string
-    // const overId = over.id as string
-
-    // // Handle card dragging over columns (including hidden columns)
-    // if (activeId.startsWith("card-")) {
-    //   let newColumn: CardColumn | null = null
-
-    //   if (overId.startsWith("column-")) {
-    //     newColumn = overId.replace("column-", "") as CardColumn
-    //   } else if (overId.startsWith("hidden-column-")) {
-    //     newColumn = overId.replace("hidden-column-", "") as CardColumn
-    //   }
-
-    //   if (newColumn) {
-    //     const cardId = Number.parseInt(activeId.replace("card-", ""))
-    //     const card = data.cards.find((c) => c.id === cardId)
-
-    //     if (card && card.column !== newColumn) {
-    //       // Update card column immediately for visual feedback
-    //       setData(
-    //         (prev) =>
-    //           prev && {
-    //             ...prev,
-    //             cards: prev.cards.map((c) => (c.id === cardId ? { ...c, column: newColumn } : c)),
-    //           },
-    //       )
-    //     }
-    //   }
-    // }
   }
 
   const handleDragEnd = (event: DragEndEvent) => {
