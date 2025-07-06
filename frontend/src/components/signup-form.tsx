@@ -63,6 +63,9 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
                 },
             });
             setSuccess(true);
+            if (window.umami) {
+                window.umami.track('user-signup');
+            }
             setTimeout(() => {
                 router.push("/login");
             }, successTimeout);

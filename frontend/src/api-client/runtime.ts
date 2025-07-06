@@ -11,9 +11,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+// get api path from environment variable or use default
+const API_PATH = process.env.NEXT_PUBLIC_API_PATH || "http://localhost:8000";
 
-
-export const BASE_PATH = "https://api.locus.ihorsavenko.com".replace(/\/+$/, "");
+export const BASE_PATH = API_PATH.replace(/\/+$/, "");
 
 export interface ConfigurationParameters {
     basePath?: string; // override base path
