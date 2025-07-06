@@ -69,6 +69,7 @@ const HiddenColumnsPanel = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(true)
 
+
   return (
     <div className="min-w-[240px] border-l border-border bg-card/50">
       <div className="p-3">
@@ -185,11 +186,12 @@ export const BoardColumns = ({
           </div>
         </ResizablePanel>
 
-        <ResizableHandle />
-
+       { hiddenColumns.length > 0 && <>
+        <ResizableHandle/>
         <ResizablePanel defaultSize={20} minSize={15} maxSize={30}>
           <HiddenColumnsPanel hiddenColumns={hiddenColumns} boardId={data.board.id} setMetadata={setMetadata} />
         </ResizablePanel>
+       </>}
       </ResizablePanelGroup>
     </div>
   )
