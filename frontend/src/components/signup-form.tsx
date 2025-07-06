@@ -63,6 +63,7 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
                 },
             });
             setSuccess(true);
+            // Remove error
             if (window.umami) {
                 window.umami.track('user-signup');
             }
