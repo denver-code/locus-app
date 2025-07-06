@@ -31,7 +31,7 @@ const Column = ({
   if (count === 0) return null
 
   return (
-    <div className="flex flex-col min-w-[320px] max-w-[400px] flex-1">
+    <div className="flex flex-col min-w-[320px] max-w-[400px] flex-1 bg-zinc-900/50 rounded-lg border border-border">
       <div className="flex items-center justify-between px-3 py-2 mb-3">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-blue-500"></div>
@@ -67,7 +67,7 @@ const HiddenColumnsPanel = ({
   boardId: number,
   setMetadata: Dispatch<SetStateAction<Metadata>>
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(true)
 
   return (
     <div className="min-w-[240px] border-l border-border bg-card/50">
@@ -153,7 +153,7 @@ export const BoardColumns = ({
 
 
   return (
-    <div className="h-full bg-background">
+    <div className="h-full bg-zinc-950/60">
       <ResizablePanelGroup direction="horizontal" className="h-full">
         <ResizablePanel defaultSize={80} minSize={60}>
           <div className="h-full flex gap-6 p-6 overflow-x-auto">

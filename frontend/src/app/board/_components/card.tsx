@@ -56,7 +56,7 @@ export function DisplayCard({
     N?: number
   }) {
     const classNames = cn(
-      "flex flex-col items-start gap-2 p-2 rounded-lg border bg-background hover:bg-accent/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md group",
+      "flex flex-col items-start gap-2 p-2 rounded-lg border bg-zinc-900 hover:bg-zinc-950/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md group",
       className,
     )
   
