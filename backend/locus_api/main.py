@@ -36,6 +36,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Configure CORS
 origins = settings.cors_origins.split(",")
 
 app.add_middleware(
