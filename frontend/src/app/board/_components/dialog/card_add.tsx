@@ -77,6 +77,8 @@ export const AddCardForm = ({
                 window.umami.track('card-created');
             }
 
+            form.reset();
+
             toast({
                 title: "Card created",
                 description: "Card created successfully",
