@@ -63,7 +63,6 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
                 },
             });
             setSuccess(true);
-            // Remove error
             if (window.umami) {
                 window.umami.track('user-signup');
             }
@@ -72,8 +71,16 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
             }, successTimeout);
         } catch (error) {
             if (error instanceof ResponseError && error.response.status === 409) {
+                if (window.umami) {
+                    window.umami.track('user-signup-failed', {
+                        reason: "email-already-registered",});
+                }
                 form.setError("root", { message: "Email already registered" });
             } else {
+                if (window.umami) {
+                    window.umami.track('user-signup-failed', {
+                        reason: "unknown-error",});
+                }
                 form.setError("root", { message: "An error occurred while signing up" });
             }
         }

@@ -104,6 +104,9 @@ export function CardStatusDropdown({ card, data, setData, trigger }: CardStatusD
           },
       )
 
+      if (window.umami) {
+        window.umami.track('card-status-updated')
+      }
       toast({
         title: "Status updated",
         description: `Card moved to ${statusConfig[newColumn].label}`,
@@ -118,6 +121,9 @@ export function CardStatusDropdown({ card, data, setData, trigger }: CardStatusD
           },
       )
 
+      if (window.umami) {
+        window.umami.track('card-status-update-failed')
+      }
       toast({
         title: "Update failed",
         description: "Failed to update card status. Please try again.",

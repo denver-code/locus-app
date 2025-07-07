@@ -55,6 +55,9 @@ const AddBoardContent = ({
                     acronym: values.acronym
                 },
             });
+            if (window.umami) {
+                window.umami.track('board-created');
+            }
             setBoards((prevBoards) => (prevBoards ? [...prevBoards, response] : null));
         } catch (error) {
             console.error("Error creating board:", error);

@@ -310,6 +310,9 @@ export const ViewDialog = ({
                         ),
                     }
             );
+            if (window.umami) {
+                window.umami.track('card-updated');
+            }
             toast({
                 title: "Card updated",
                 description: "Card updated successfully",
@@ -317,6 +320,9 @@ export const ViewDialog = ({
         } catch (error) {
             // Handle errors and provide user feedback
             // console.error("Failed to update card:", error);
+            if (window.umami) {
+                window.umami.track('card-update-failed');
+            }
             toast({
                 title: "Card update failed",
                 description: "Please try again",
@@ -340,12 +346,19 @@ export const ViewDialog = ({
                     }
             );
 
+            if (window.umami) {
+                window.umami.track('card-deleted');
+            }
+
             toast({
                 title: "Card deleted",
                 description: "Card was successfully deleted",
             });
             setOpen(false);
         } catch (error) {
+            if (window.umami) {
+                window.umami.track('card-delete-failed');
+            }
             toast({
                 title: "Delete failed",
                 description: "Failed to delete the card. Please try again.",

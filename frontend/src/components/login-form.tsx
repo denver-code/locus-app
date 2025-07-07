@@ -49,11 +49,24 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
                 password: values.password,
             });
             setToken(token);
+            if (window.umami) {
+                window.umami.track('user-logged-in');
+            }
             router.push("/boards");
         } catch (error) {
             if (error instanceof ResponseError && error.response.status === 401) {
+                if (window.umami) {
+                    window.umami.track('user-login-failed', {
+                        reason: "invalid-credentials",
+                    });
+                }
                 form.setError("root", { message: "Invalid email or password" });
             } else {
+                if (window.umami) {
+                    window.umami.track('user-login-failed', {
+                        reason: "unknown-error",
+                    });
+                }
                 form.setError("root", { message: "An error occurred while logging in" });
             }
         }

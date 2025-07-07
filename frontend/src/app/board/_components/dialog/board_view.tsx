@@ -259,6 +259,9 @@ export const ViewBoardDialog = ({
                 boardInUpdate: patch,
             });
 
+            if (window.umami) {
+                window.umami.track('board-updated');
+            }
             toast({
                 title: "Board updated",
                 description: "Board updated successfully",
@@ -272,6 +275,9 @@ export const ViewBoardDialog = ({
                     }
             );
         } catch (error) {
+            if (window.umami) {
+                window.umami.track('board-update-failed');
+            }
             toast({
                 title: "Update failed",
                 description: "Failed to update the board. Please try again.",
@@ -286,7 +292,9 @@ export const ViewBoardDialog = ({
             await boardsApi.deleteBoardApiBoardsBoardIdDelete({
                 boardId: metadata.board.id,
             });
-
+            if (window.umami) {
+                window.umami.track('board-deleted');
+            }
             toast({
                 title: "Board deleted",
                 description: "Board was successfully deleted",
@@ -294,6 +302,9 @@ export const ViewBoardDialog = ({
             setOpen(false);
             router.push("/");
         } catch (error) {
+            if (window.umami) {
+                window.umami.track('board-delete-failed');
+            }
             toast({
                 title: "Delete failed",
                 description: "Failed to delete the board. Please try again.",
