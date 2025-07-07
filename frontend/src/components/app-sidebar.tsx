@@ -31,6 +31,9 @@ export function AppSidebar() {
 
     const handleLogout = () => {
         clearToken();
+        if(window.umami) {
+            window.umami.track('user-logout');
+        }
         router.push("/login");
     };
 
