@@ -1,7 +1,7 @@
 # Locus App
 
-
 ## Overview
+![Demo board page](.github/assets/preview.png)
 
 ## Key Features
 
