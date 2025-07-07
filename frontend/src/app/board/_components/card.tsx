@@ -83,10 +83,11 @@ export function DisplayCard({
               ))}
             </div>
           </div>
-          <div className="flex w-full">
+          <div className="flex w-full h-full">
             <CardStatusDropdown card={card} data={data} setData={setData} />
             <h3 className="font-semibold flex-1 justify-start text-left tracking-tight leading-snug text-foreground/80 line-clamp-2 antialiased">
-              {card.title.length > N ? card.title.slice(0, N) + "..." : card.title}
+              {/* {card.title.length > N ? card.title.slice(0, N) + "..." : card.title} */}
+              {card.title}
             </h3>
           </div>
         </div>
