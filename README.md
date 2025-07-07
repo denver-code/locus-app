@@ -18,6 +18,7 @@
 - **Infrastructure:** Docker
 - **Testing:** Pytest for API testing
 - **CI/CD:** GitHub Actions
+- **Analytics:** Umami for user and event analytics
 
 ## Project Structure
 
@@ -57,7 +58,6 @@ Prerequisites:
 ## Technical Highlights
 
 - **Backend:**
-
   - RESTful API with FastAPI
   - SQLAlchemy ORM with proper relationship modeling
   - Comprehensive API testing with pytest
@@ -68,6 +68,8 @@ Prerequisites:
   - Type-safe development with TypeScript
   - Optimistic updates for better UX
   - Responsive design with Tailwind CSS
+  - shadcn/ui for modern UI components
+  - Analytics integration with Umami
 
 ## Planned Enhancements
 
