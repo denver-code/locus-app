@@ -1,8 +1,8 @@
 import { Dialog } from "@/components/ui/dialog";
 import { DefaultDialog } from "./default";
-import { AddCardForm } from "./card_add";
+import { AddCardForm } from "./card-add";
 import { ViewDialog } from "./card_view";
-import { ViewBoardDialog } from "./board_view";
+import { ViewBoardDialog } from "./board-view";
 import { Data, Metadata } from "../interfaces";
 import { SetStateAction } from "react";
 import { Dispatch } from "react";

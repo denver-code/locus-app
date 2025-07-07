@@ -9,7 +9,7 @@ import { CardColumn } from "@/api-client/models/CardColumn"
 import type { Metadata } from "./interfaces"
 import type { Dispatch, SetStateAction } from "react"
 import { cn } from "@/lib/utils"
-import { DroppableHiddenColumn } from "./drag_components"
+import { DroppableHiddenColumn } from "./drag-components"
 
 
 

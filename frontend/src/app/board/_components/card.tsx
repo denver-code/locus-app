@@ -8,7 +8,7 @@ import { Dispatch } from "react";
 import { SetStateAction } from "react";
 import { MoreHorizontal, Plus, ChevronDown, ChevronRight } from "lucide-react"
 import { CardColumn } from "@/api-client";
-import { CardStatusDropdown } from "./card_status_dropdown";
+import { CardStatusDropdown } from "./card_status-dropdown";
 
 export function AddCard({
     boardId,

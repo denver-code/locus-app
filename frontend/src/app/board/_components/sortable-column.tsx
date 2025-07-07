@@ -10,7 +10,7 @@ import type { Metadata } from "./interfaces"
 import type { Dispatch, SetStateAction } from "react"
 import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
-import { DroppableColumn } from "./drag_components"
+import { DroppableColumn } from "./drag-components"
 
 
 export const SortableColumn = ({

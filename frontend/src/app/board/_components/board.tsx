@@ -7,9 +7,9 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/componen
 import type { Data, Metadata } from "./interfaces"
 import { useBoardState } from "@/hooks/use-board-state"
 import { useDndHandlers } from "@/hooks/use-dnd-handlers"
-import { SortableColumn } from "./sortable_column"
-import { DraggableCard } from "./draggable_card"
-import { HiddenColumnsPanel } from "./hidden_columns_panel"
+import { SortableColumn } from "./sortable-column"
+import { DraggableCard } from "./draggable-card"
+import { HiddenColumnsPanel } from "./hidden-columns-panel"
 import { KanbanDragOverlay } from "@/components/kanban-drag-overlay"
 import { ALL_COLUMNS } from "@/constants"
 
