@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <Script async src="https://umami.ihorsavenko.com/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>
+            <Script async src={`https://${process.env.NEXT_PUBLIC_UMAMI_WEBSITE_DOMAIN}/script.js`} data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}></Script>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
             <ThemeProvider
                 attribute="class"
