@@ -254,6 +254,9 @@ export const BoardColumns = ({
       try {
         setColumnOrder(JSON.parse(savedColumnOrder))
       } catch (error) {
+        if (window.umami) {
+          window.umami.track('column-order-parse-failed');
+      }
         console.error("Failed to parse saved column order:", error)
       }
     }
@@ -304,6 +307,9 @@ export const BoardColumns = ({
             const bPos = positions[b.id]?.position ?? 999
             return aPos - bPos
           } catch (error) {
+            if (window.umami) {
+              window.umami.track('card-positions-parse-failed');
+            }
             console.error("Failed to parse saved card positions:", error)
           }
         }
@@ -344,11 +350,17 @@ export const BoardColumns = ({
       savePositions(columnOrder, finalData)
 
       const columnName = allColumns.find((col) => col.column === newColumn)?.name || newColumn
+      if (window.umami) {
+        window.umami.track('card-status-updated');
+      }
       toast({
         title: "Card moved",
         description: `Card moved to ${columnName}`,
       })
     } catch (error) {
+      if (window.umami) {
+        window.umami.track('card-status-update-failed');
+      }
       console.error("Failed to update card status:", error)
 
       // Revert optimistic update on error
@@ -476,6 +488,9 @@ export const BoardColumns = ({
           setData((prev) => (prev ? { ...prev, cards: [...prev.cards] } : null));
 
           // --- END OF FIX ---
+          if (window.umami) {
+            window.umami.track('card-position-updated');
+          }
 
           toast({
             title: "Card reordered",
